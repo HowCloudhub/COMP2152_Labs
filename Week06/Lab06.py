@@ -1,7 +1,7 @@
 # ============================================================
 #  WEEK 06 LAB: NETWORK DIAGNOSTIC LOGGER
 #  COMP2152 — Windows Version
-#  [Your Name Here]
+#  Munir Howlader
 # ============================================================
 #
 #  This program runs network commands (ping, nslookup, ipconfig),
@@ -13,6 +13,8 @@
 #          — Write to a text file in append mode
 #          — Read from a text file
 #
+
+
 #  Task 2: Complete log_to_csv() and read_csv_log()
 #          — Write a row to a CSV file
 #          — Read and display CSV rows
@@ -199,16 +201,19 @@ def write_to_log(filename, entry):
     """Append a log entry to a text file."""
     # *** YOUR CODE HERE ***
     # Open the file in append mode ("a") using a with statement
+    with open(filename, "a") as file:
+        file.write(entry + "\n")
+
     # Write the entry + "\n" to the file
-    pass
 
 
 def read_log(filename):
     """Read and return the entire contents of a log file."""
     # *** YOUR CODE HERE ***
     # Open the file in read mode ("r") using a with statement
+    with open(filename, "r") as file:
+        return file.read()
     # Return the result of file.read()
-    pass
 
 
 # This function is COMPLETE — it uses write_to_log() above
@@ -242,11 +247,12 @@ LOG_FILE = "diagnostics.csv"
 def log_to_csv(filename, command, target, result, status):
     """Append one row to the CSV log file with a timestamp."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    # *** YOUR CODE HERE ***
     # Open filename in append mode ("a") with newline=""
-    # Create a csv.writer(file)
-    # Write one row: [timestamp, command, target, result, status]
-    pass
+    with open(filename, "a", newline="") as file:
+        # Create a csv.writer(file)
+        writer = csv.writer(file)
+        # Write one row: [timestamp, command, target, result, status]
+        writer.writerow([timestamp, command, target, result, status])
 
 
 def read_csv_log(filename):
