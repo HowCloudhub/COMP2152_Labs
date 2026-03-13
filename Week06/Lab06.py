@@ -257,11 +257,13 @@ def log_to_csv(filename, command, target, result, status):
 
 def read_csv_log(filename):
     """Read and display all rows from the CSV log file."""
-    # *** YOUR CODE HERE ***
     # Open filename in read mode ("r") with newline=""
-    # Create a csv.reader(file)
-    # Loop through rows and print: " | ".join(row)
-    pass
+    with open(filename, 'r', newline='') as file:
+        # Create a csv.reader(file)
+        reader = csv.reader(file)
+        # Loop through rows and print: " | ".join(row)
+        for row in reader:
+            print(' | '.join(row))
 
 
 # This function is COMPLETE — it uses the CSV functions above
@@ -352,18 +354,25 @@ def safe_nslookup(domain):
 
 def safe_read_log(filename):
     """Read a log file with error handling for missing files."""
-    # *** YOUR CODE HERE ***
-    # try:
-    #     open the file in read mode
-    #     read the content
-    #     if content is empty: print "Log file is empty." and return ""
-    #     else: return the content
-    # except FileNotFoundError:
-    #     print "No log file found. Run a diagnostic first."
-    #     return ""
-    # finally:
-    #     print "Log read attempt completed."
-    pass
+
+    try:
+        #     open the file in read mode
+        with open(filename, 'r') as file:
+            # read the content
+            content = file.read()
+        # if content is empty: print "Log file is empty." and return ""
+            if content == '':
+                print('Log file is empty')
+                return ''
+            else:
+                return content
+
+    except FileNotFoundError:
+        print("No log file found. Run a diagnostic first.")
+        return ""
+
+    finally:
+        print("Log read attempt completed.")
 
 
 def get_valid_input(prompt, valid_options):
@@ -537,5 +546,6 @@ def main():
 #  TEST YOUR WORK
 # ============================================================
 # After completing Tasks 1-3, uncomment the line below to run:
-# main()
+
+main()
 # ============================================================

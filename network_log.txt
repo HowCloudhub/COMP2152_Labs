@@ -1,0 +1,12 @@
+[2026-02-22 14:27:28] PING www.youtube.com
+
+Pinging youtube-ui.l.google.com [142.250.139.91] with 32 bytes of data:
+Reply from 142.250.139.91: bytes=32 time=20ms TTL=113
+Reply from 142.250.139.91: bytes=32 time=22ms TTL=113
+Reply from 142.250.139.91: bytes=32 time=22ms TTL=113
+
+Ping statistics for 142.250.139.91:
+    Packets: Sent = 3, Received = 3, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 20ms, Maximum = 22ms, Average = 21ms
+----------------------------------------
